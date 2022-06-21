@@ -36,7 +36,7 @@ jobs:
         run: docker build -t docker-api-robotframework:0.0.${{ github.run_number }} -t docker-api-robotframework:latest .
       
       # Runs the tests
-      -name: docker run tests
+      - name: docker run tests
         run: >
              docker run --rm
              --user $(id -u):$(id -g) \
