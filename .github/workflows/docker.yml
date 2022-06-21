@@ -39,10 +39,10 @@ jobs:
       - name: docker run tests
         run: >
              docker run --rm
-             --user $(id -u):$(id -g) \
-             -v $GITHUB_WORKSPACE/tests:/home/robot/tests \
-             -v $GITHUB_WORKSPACE/results:/home/robot/results \
-             -v $GITHUB_WORKSPACE/libs:/home/robot/libs \
+             --user $(id -u):$(id -g)
+             -v $GITHUB_WORKSPACE/tests:/home/robot/tests
+             -v $GITHUB_WORKSPACE/results:/home/robot/results
+             -v $GITHUB_WORKSPACE/libs:/home/robot/libs
              docker-api-robotframework:latest
              
       # Push image
