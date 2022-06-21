@@ -5,6 +5,5 @@
 env/
 venv/
 ENV/
-results/
 .DS_Store
 .vscode
