@@ -47,5 +47,6 @@ jobs:
              
       # Push image
       - name: docker push
-        run: docker push docker-api-robotframework:0.0.${{ github.run_number }}
-        run: docker push docker-api-robotframework:latest
+        run: >
+          docker push docker-api-robotframework:0.0.${{ github.run_number }} 
+          && docker push docker-api-robotframework:latest
