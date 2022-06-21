@@ -33,7 +33,7 @@ jobs:
       
       # Builds the docker image
       - name: docker build
-        run: docker build -t docker-api-robotframework:0.0.${{ github.run_number }} -t docker-api-robotframework:latest .
+        run: docker build -t christestet/docker-api-robotframework:0.0.${{ github.run_number }} -t christestet/docker-api-robotframework:latest .
       
       # Runs the tests
       - name: docker run tests
@@ -43,10 +43,10 @@ jobs:
              -v $GITHUB_WORKSPACE/tests:/root/tests
              -v $GITHUB_WORKSPACE/results:/root/results
              -v $GITHUB_WORKSPACE/libs:/root/libs
-             docker-api-robotframework:latest
+             christestet/docker-api-robotframework:latest
              
       # Push image
       - name: docker push
         run: >
-          docker push docker-api-robotframework:0.0.${{ github.run_number }} 
-          && docker push docker-api-robotframework:latest
+          docker push christestet/docker-api-robotframework:0.0.${{ github.run_number }} 
+          && docker push christestet/docker-api-robotframework:latest
