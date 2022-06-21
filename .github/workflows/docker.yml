@@ -43,7 +43,7 @@ jobs:
              -v $GITHUB_WORKSPACE/tests:/root/tests
              -v $GITHUB_WORKSPACE/results:/root/results
              -v $GITHUB_WORKSPACE/libs:/root/libs
-             docker-api-robotframework:latest
+             christestet/docker-api-robotframework:latest
              
       # Push image
       - name: docker push
