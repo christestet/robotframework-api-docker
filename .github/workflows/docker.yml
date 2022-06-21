@@ -24,12 +24,26 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
+      #Login to docker registry 
       - name: docker login
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin 
-      # Runs a single command using the runners shell
+      # Builds the docker image
       - name: docker build
-        run: docker build -t docker-api-robotframework .
+        run: docker build -t docker-api-robotframework:0.0.${{ github.run_number }} -t docker-api-robotframework:latest .
+      
+      -name: docker run tests
+        run: >
+             docker run --rm
+             --user $(id -u):$(id -g) \
+             -v $PWD/tests:/home/robot/tests \
+             -v $PWD/results:/home/robot/results \
+             -v $PWD/libs:/home/robot/libs \
+             docker-api-robotframework:latest
+
+      # Push image
+      - name: docker push
+        run: docker push docker-api-robotframework:0.0.${{ github.run_number }}
+        run: docker push docker-api-robotframework:latest
