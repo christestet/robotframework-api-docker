@@ -24,16 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      #Login to docker registry 
-      - name: docker login
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin 
-      
       # Builds the docker image
       - name: docker build
-        run: docker build -t christestet/docker-api-robotframework:0.0.${{ github.run_number }} -t christestet/docker-api-robotframework:latest .
+        run: docker build -t christestet/docker-api-robotframework:0.0.${{ github.run_number }} .
       
       # Runs the tests
       - name: docker run tests
@@ -44,9 +37,3 @@ jobs:
              -v $GITHUB_WORKSPACE/results:/root/results
              -v $GITHUB_WORKSPACE/libs:/root/libs
              christestet/docker-api-robotframework:latest
-             
-      # Push image
-      - name: docker push
-        run: >
-          docker push christestet/docker-api-robotframework:0.0.${{ github.run_number }} 
-          && docker push christestet/docker-api-robotframework:latest
