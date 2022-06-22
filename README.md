@@ -10,9 +10,17 @@
  __   __   __        ___  __                                          
 |  \ /  \ /  ` |__/ |__  |__)                                         
 |__/ \__/ \__, |  \ |___ |  \                                         
-
-Robotframework based API testing in Docker                                                                      
+                                                                    
 ```
+Run your tests with Robotframework :space_invader: and the Requests Library :left_right_arrow: inside a docker container :whale: 
+
+[![Docker Robotframework API Testing Image](https://github.com/christestet/robotframework-api-docker/actions/workflows/docker.yml/badge.svg)](https://github.com/christestet/robotframework-api-docker/actions/workflows/docker.yml)
+
+## Roadmap ##
+- add non root user
+- fix the "777" folder rights on root
+
+
 ## Getting started ##
 - build the docker image from the Dockerfile from the Repository
 - Run your tests with the following command
