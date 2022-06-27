@@ -16,11 +16,6 @@ Run your tests with Robotframework :space_invader: and the Requests Library :lef
 
 [![Docker Robotframework API Testing Image](https://github.com/christestet/robotframework-api-docker/actions/workflows/docker.yml/badge.svg)](https://github.com/christestet/robotframework-api-docker/actions/workflows/docker.yml)
 
-## Roadmap ##
-- add non root user
-- fix the "777" folder rights on root
-
-
 ## Getting started ##
 - build the docker image from the Dockerfile from the Repository
 - Run your tests with the following command
@@ -28,9 +23,9 @@ Run your tests with Robotframework :space_invader: and the Requests Library :lef
 ```docker
     docker run --rm \
   --user $(id -u):$(id -g) \
-  -v $PWD/tests:/root/tests \
-  -v $PWD/results:/root/results \
-  -v $PWD/libs:/root/libs \
+  -v $PWD/tests:/home/robot/tests \
+  -v $PWD/results:/home/robot/results \
+  -v $PWD/libs:/home/robot/libs \
   docker-api-robotframework
 ```
 ## Configuration ##
