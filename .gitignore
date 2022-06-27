@@ -7,3 +7,10 @@ venv/
 ENV/
 .DS_Store
 .vscode
+results/log.html
+results/output.xml
+results/pabot-api-xunit.xml
+results/report.html
+results/pabot_results/0/output.xml
+results/pabot_results/0/robot_stdout.out
+results/pabot_results/0/robot_stderr.out
