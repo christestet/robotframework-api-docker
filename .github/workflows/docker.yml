@@ -6,9 +6,9 @@ name: Docker Robotframework API Testing Image
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -33,7 +33,7 @@ jobs:
         run: >
              docker run --rm
              --user $(id -u):$(id -g)
-             -v $GITHUB_WORKSPACE/tests:/root/tests
-             -v $GITHUB_WORKSPACE/results:/root/results
-             -v $GITHUB_WORKSPACE/libs:/root/libs
+             -v $GITHUB_WORKSPACE/tests:/home/robot/tests
+             -v $GITHUB_WORKSPACE/results:/home/robot/results
+             -v $GITHUB_WORKSPACE/libs:/home/robot/libs
              docker-api-robotframework:0.0.${{ github.run_number }}
